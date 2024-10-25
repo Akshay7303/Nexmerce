@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexmerce</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+    <style>
+        .logincontainer1{
+    width: 50%;
+    float: right;
+    height: 100vh;
+    position: fixed;
+        }
+.logincontainer{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    float: left;
+    height: 100vh;
+    position: fixed;
+}
+    </style>
+    <div class="logincontainer1"></div>
+    <div class="logincontainer">
+        <div class="box">
+        <form id="loginForm" action="#">
+            <header class="miniHeader">Start your Business</header>
+            <header>Sign Up to Nexmerce</header><br>
+            <div class="inputfield">
+            <label>E-Mail</label><br>
+            <input type="text" id="E-mail" placeholder="Enter your email address" required>
+            </div>
+            <div class="inputfield">
+                <label>Password</label><br>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <br>
+                <button>Sign Up</button>
+                <div class="links"><br>
+                    Already have an account? <a href="index.html">Sign In</a>
+                </div>
+                <br>
+                <p>Or</p><br>
+                <script src="https://accounts.google.com/gsi/client" async></script>
+                <div id="g_id_onload"
+        data-client_id="YOUR_GOOGLE_CLIENT_ID"
+        data-login_uri="https://your.domain/your_login_endpoint"
+        data-auto_prompt="false">
+    </div>
+    <div class="g_id_signin"
+        data-type="standard"
+        data-size="large"
+        data-theme="outline"
+        data-text="sign_in_with"
+        data-shape="rectangular"
+        data-logo_alignment="left">
+    </div>
+
+        </form>
+        </div>
+    </div>
+
+</body>
+</html>

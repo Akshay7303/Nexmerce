@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Nexmerce</title>
+    <script src="https://kit.fontawesome.com/7717c1610a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/CSS/menu.css">
+</head>
+<body>
+    <div class="menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="side-bar">
+        <header>
+        <div class="close-btn">
+            <i class="fas fa-times"></i>
+        </div>
+        <img src="/Images/profile.pic.webp" alt="">
+        <h1>Hii Nexmerce</h1>
+        </header>
+        <div class="menu">
+            <div class="items"><a href=""><i class="fa-solid fa-user"></i>PROFILE</a></div>
+            <div class="items"><a href=""><i class="fa-solid fa-ranking-star"></i>RANKING</a></div>
+            <div class="items"><a href=""><i class="fa-solid fa-star"></i>RATING</a></div>
+            <div class="items"><a href=""><i class="fa-solid fa-cart-shopping"></i>ORDERS</a></div>
+            <div class="items"><a href=""><i class="fa-solid fa-receipt"></i>RECEIPTS</a></div>
+            <div class="items"><a href=""><i class="fa-solid fa-gear"></i>SETTINGS</a></div>
+            <div class="items"><a href=""><i class="fa-solid fa-right-from-bracket"></i>LOGOUT</a></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+          //jquery for expand and collapse the sidebar
+          $('.menu-btn').click(function(){
+            $('.side-bar').addClass('active');
+            $('.menu-btn').css("visibility", "hidden");
+          });
+          //jquery for closing side menu
+          $('.close-btn').click(function(){
+            $('.side-bar').removeClass('active');
+            $('.menu-btn').css("visibility", "visible");
+          });
+        });
+        </script>
+        
+    
+    
+</body>
+</html>
