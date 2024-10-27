@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post to Instagram</title>
+</head>
+<body>
+    <h1>Post Image to Instagram</h1>
+    <form id="postForm">
+        <label for="imageUrl">Image URL:</label><br>
+        <input type="text" id="imageUrl" name="imageUrl" required><br><br>
+        <label for="caption">Caption:</label><br>
+        <input type="text" id="caption" name="caption"><br><br>
+        <button type="submit">Post to Instagram</button>
+    </form>
+    <script>
+        document.getElementById('postForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const accessToken = 'IGQWRQcFVpNVR1QzhaZA1ctMVA0dkw4a0pZAeW1tb1B5T3pQQjNoNDE3anBRZAUxEYlhfN0l1LTk4SkIwRVFvZA0ptdV9ZANFBXdEo5eGdmbmtzakhNcnZAjNURvV1BiQWlYdFVMdDhGYVBHc09Ielk4NHQtc015UW9FeEkZD'; // Securely obtain this token
+            const imageUrl = document.getElementById('imageUrl').value;
+            const caption = document.getElementById('caption').value;
+
+            const uploadImage = async () => {
+                const url = `https://graph.facebook.com/v13.0/me/media`;
+                const payload = {
+                    image_url: imageUrl,
+                    caption: caption,
+                    access_token: accessToken,
+                };
+
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload),
+                    });
+                    const result = await response.json();
+                    if (result.id) {
+                        const creationId = result.id;
+                        const publishUrl = `https://graph.facebook.com/v13.0/me/media_publish`;
+                        const publishPayload = {
+                            creation_id: creationId,
+                            access_token: accessToken,
+                        };
+                        const publishResponse = await fetch(publishUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(publishPayload),
+                        });
+                        const publishResult = await publishResponse.json();
+                        if (publishResult.id) {
+                            alert('Image posted successfully! ID: ' + publishResult.id);
+                        } else {
+                            alert('Error posting image: ' + JSON.stringify(publishResult));
+                        }
+                    } else {
+                        alert('Error uploading image: ' + JSON.stringify(result));
+                    }
+                } catch (error) {
+                    alert('Error: ' + error);
+                }
+            };
+
+            await uploadImage();
+        });
+    </script>
+</body>
+</html>
